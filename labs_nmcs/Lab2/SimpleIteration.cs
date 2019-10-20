@@ -25,6 +25,7 @@ namespace labs_nmcs.Lab2 {
       if (isOptimized()) {
         Console.WriteLine("SOLE is optimized");
         simpleIteraion();
+        showSolution(input);
       } else {
         Console.WriteLine("SOLE is not optimized \n Performing optimization...");
         performOptimization(input);
@@ -32,10 +33,34 @@ namespace labs_nmcs.Lab2 {
         if (isOptimized()) {
           Console.WriteLine("SOLE is now opitmized \n Performing calculation...");
           simpleIteraion();
+          showSolution(input);
         } else {
           throw new Exception("SOLE cannot be optimized.");
         }
       }
+    }
+
+    private void showSolution(double[][] input) {
+      for (int i = 0; i < resultsTable[0].Length; i++) {
+        Console.Write($"x{ i + 1} = {resultsTable[resultsTable.Count - 1][i]}; ");
+      }
+      Console.WriteLine("Solution check: ");
+      for (int i = 0; i < resultsTable[0].Length; i++) {
+        Console.WriteLine("\t Result is " + checkEquation(input[i]));
+      }
+    }
+
+    private double checkEquation(double[] input) {
+      double sum = 0;
+      for (int i = 0; i < resultsTable[0].Length; i++) {
+        Console.Write(input[i] + "*" + resultsTable[resultsTable.Count - 1][i]);
+        if(i != resultsTable[0].Length - 1) {
+          Console.Write(" + ");
+        }
+        sum += input[i] * resultsTable[resultsTable.Count - 1][i];
+      }
+      Console.Write(" = " + input[input.Length - 1]);
+      return sum;
     }
 
     public void showResult() {
