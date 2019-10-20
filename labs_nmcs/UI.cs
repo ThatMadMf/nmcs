@@ -31,7 +31,7 @@ namespace labs_nmcs {
 
     static public void lab2() {
       double[][] input = new double[][] {
-        new double[] { 4, 7, 4, 17 },
+        new double[]{ 4, 7, 4, 17 },
         new double[]{ 1, 2, 6, 12 },
         new double[]{ 9, 5, 3, 14 } };
 
@@ -39,7 +39,27 @@ namespace labs_nmcs {
          new double[] { -2, 1, 1, 15 },
         new double[]{ 1, -2, 1, 10 },
         new double[]{ -1, 3, -6, 12 } };
-      SimpleIteration simpleIteration = new SimpleIteration(input2);
+
+
+      SimpleIteration simpleIteration = new SimpleIteration(input);
+      while (true) {
+        Console.WriteLine("1 - Show results table \n2 - Show infelicity table");
+        string key = Console.ReadLine();
+        switch (key) {
+          case "1": {
+              simpleIteration.showResult();
+              break;
+            }
+          case "2": {
+              simpleIteration.showDifferences();
+              break;
+            }
+          default: {
+              Console.WriteLine("wrong key");
+              break;
+            }
+        }
+      }
     }
   }
 }
