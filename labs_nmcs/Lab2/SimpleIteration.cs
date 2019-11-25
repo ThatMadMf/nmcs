@@ -51,7 +51,7 @@ namespace labs_nmcs.Lab2 {
     }
 
     private double checkEquation(double[] input) {
-      double sum = 0;
+      double sum = 0; 
       for (int i = 0; i < resultsTable[0].Length; i++) {
         Console.Write(input[i] + "*" + resultsTable[resultsTable.Count - 1][i]);
         if(i != resultsTable[0].Length - 1) {
@@ -165,7 +165,7 @@ namespace labs_nmcs.Lab2 {
             sum += odds[i][j];
           }
         }
-        if (sum >= 4) {
+        if (sum >= 2) {
           return false;
         }
       }

@@ -10,7 +10,7 @@ using labs_nmcs.Lab1;
 namespace labs_nmcs {
   class Program {
     static void Main(string[] args) {
-      UI.lab2();
+      UI.lab5();
     }
   }
 }
