@@ -18,13 +18,13 @@ namespace labs_nmcs {
       int rightBorder = Convert.ToInt32(Console.ReadLine());
       //(Pow(x,4)-1)/Pow(x,3)
       //1.5-Pow(x, 1-Cos(x))
-      var res = Segment1.runNewton(expression, leftBorder, rightBorder, 0.01);
+      var res = TangentMethod.runNewton(expression, leftBorder, rightBorder, 0.01);
       if (res.Count == 0) {
         Console.WriteLine("There are no solutions on this segment");
       } else {
         foreach (var x in res) {
           Console.WriteLine("Solution: " + x);
-          Console.WriteLine($"F({x}) = " + Segment1.calcFunc(expression, x));
+          Console.WriteLine($"F({x}) = " + TangentMethod.calcFunc(expression, x));
         }
       }
       Console.ReadKey();
@@ -42,7 +42,7 @@ namespace labs_nmcs {
         new double[]{ -1, 3, -6, 12 } };
 
 
-      SimpleIteration simpleIteration = new SimpleIteration(input);
+      Lab2.SimpleIteration simpleIteration = new Lab2.SimpleIteration(input);
       while (true) {
         Console.WriteLine("1 - Show results table \n2 - Show infelicity table");
         string key = Console.ReadLine();
