@@ -29,7 +29,7 @@ namespace labs_nmcs.Lab1 {
             continue;
           }
           int iteration = 0;
-          while (!(Math.Abs(calcFunc(f, xn)) < eps || iteration < 10)) {
+          while (!(Math.Abs(calcFunc(f, xn)) < eps || iteration < 1000)) {
             xn = xn - (calcFunc(f, xn) / ((calcFunc(f, xn + eps) - calcFunc(f, xn)) / eps));
             iteration++;
           }

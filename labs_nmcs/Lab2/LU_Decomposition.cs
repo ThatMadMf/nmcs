@@ -25,7 +25,6 @@ namespace labs_nmcs.Lab2 {
         if (k != betas.Length) {
           uVector[k] = gammas[k] / lVector[k];
         }
-        Console.WriteLine("d");
       }
 
       for (int k = b.Length - 1; k >= 0; k--) {

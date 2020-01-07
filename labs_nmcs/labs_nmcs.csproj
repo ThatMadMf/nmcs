@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>labs_nmcs.Program</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Flee.Net45, Version=1.0.0.0, Culture=neutral, PublicKeyToken=951a102ce2413032, processorArchitecture=MSIL">
       <HintPath>..\packages\Flee.1.2.2\lib\net45\Flee.Net45.dll</HintPath>
@@ -41,6 +44,8 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -52,7 +57,16 @@
     <Compile Include="Lab1\SimpleIteration.cs" />
     <Compile Include="Lab2\LU_Decomposition.cs" />
     <Compile Include="Lab2\SimpleIteration.cs" />
-    <Compile Include="Lab33\SimpleIteration.cs" />
+    <Compile Include="Lab3\SimpleIteration.cs" />
+    <Compile Include="Lab4\Field.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lab4\Field.Designer.cs">
+      <DependentUpon>Field.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Lab4\FormDrawer.cs" />
+    <Compile Include="Lab4\Point.cs" />
+    <Compile Include="Lab4\Polinom.cs" />
     <Compile Include="Lab5\Lab5Class.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

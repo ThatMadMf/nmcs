@@ -96,6 +96,22 @@ namespace labs_nmcs.Lab2 {
       }
     }
 
+    public double[] solveSystem() {
+      int counter = 0;
+
+      while (counter <= 100 && !checkEpsilon()) {
+        performIteration(resultsTable[resultsTable.Count - 1]);
+        counter++;
+      }
+
+      int size = resultsTable[resultsTable.Count - 1].Length;
+      double[] res = new double[size];
+      for(int i = 0; i < size; i++) {
+        res[i] = Math.Round(resultsTable[resultsTable.Count - 1][i], 2);
+      }
+      return res;
+    }
+
     private bool checkEpsilon() {
       if (resultsTable.Count < 2) {
         return false;

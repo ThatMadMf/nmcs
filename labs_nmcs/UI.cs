@@ -11,12 +11,9 @@ namespace labs_nmcs {
   static class UI {
 
     static public void lab1() {
-      Console.WriteLine("Enter function");
-      string expression = Console.ReadLine();
-      Console.WriteLine("Enter borders");
-      int leftBorder = Convert.ToInt32(Console.ReadLine());
-      int rightBorder = Convert.ToInt32(Console.ReadLine());
-      //(Pow(x,4)-1)/Pow(x,3)
+      int leftBorder = -10;
+      int rightBorder = 10;
+      string expression = "1.5-Pow(x, 1-Cos(x))";
       //1.5-Pow(x, 1-Cos(x))
       var res = TangentMethod.runNewton(expression, leftBorder, rightBorder, 0.01);
       if (res.Count == 0) {
