@@ -14,7 +14,7 @@ namespace labs_nmcs.Lab5 {
       if (double.IsInfinity(evaluate) || double.IsNaN(evaluate)) {
         return 0;
       }
-      return evaluate;
+      return Math.Round(evaluate, 2);
     }
 
     public static double integrateSimpson3_8(double a, double b, int n, string f) {
@@ -22,12 +22,25 @@ namespace labs_nmcs.Lab5 {
       double s = calcFunc(f, a) + calcFunc(f, b);
       for (int i = 1; i < n; i++) {
         if (i % 3 == 0) {
-          s += 2 * calcFunc(f, a + i * h);
+          s += Math.Round(2 * calcFunc(f, a + i * h), 2);
         } else {
-          s += 3 * calcFunc(f, a + i * h);
+          s += Math.Round(3 * calcFunc(f, a + i * h), 2);
         }
       }
-      return s * 3 / 8 * h;
+      return Math.Round(s * h * 3 / 8, 2);
+    }
+
+    public static double integrateSimpson(double a, double b, int n, string f) {
+      double h = (b - a) / n;
+      double s = calcFunc(f, a) + calcFunc(f, b);
+      for (int i = 1; i < n; i++) {
+        if (i % 2 == 0) {
+          s += Math.Round(2 * calcFunc(f, a + i * h), 2);
+        } else {
+          s += Math.Round(4 * calcFunc(f, a + i * h), 2);
+        }
+      }
+      return Math.Round(s * h / 3, 2);
     }
   }
 }
