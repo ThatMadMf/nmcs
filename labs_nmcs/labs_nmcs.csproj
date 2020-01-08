@@ -58,6 +58,7 @@
     <Compile Include="Lab2\LU_Decomposition.cs" />
     <Compile Include="Lab2\SimpleIteration.cs" />
     <Compile Include="Lab3\SimpleIteration.cs" />
+    <Compile Include="Lab4\CubicSpline.cs" />
     <Compile Include="Lab4\Field.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -67,6 +68,8 @@
     <Compile Include="Lab4\FormDrawer.cs" />
     <Compile Include="Lab4\Point.cs" />
     <Compile Include="Lab4\Polinom.cs" />
+    <Compile Include="Lab4\Spline.cs" />
+    <Compile Include="Lab4\TriDiagonalMatrix.cs" />
     <Compile Include="Lab5\Lab5Class.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using Flee;
+using System.Threading;
 using NCalc;
 using labs_nmcs.Lab1;
 using labs_nmcs.Lab2;
+using System.Drawing;
 
 namespace labs_nmcs {
   static class Program {
@@ -14,7 +14,6 @@ namespace labs_nmcs {
     [STAThread]
     static void Main(string[] args) {
       runLab4();
-      
       Console.ReadKey();
     }
 
@@ -31,6 +30,11 @@ namespace labs_nmcs {
       double[] alphas = new double[] { 2, -2, -1, 7, -5, -3, -3 };
       double[] betas = new double[] { 0.5, 6, 3, 2, 1, 2 };
       double[] b = new double[] { 8, 6, 3, -2, 4, 7, -0.5 };
+
+      gammas = new double[] { 3.5, 1 };
+      alphas = new double[] { 1, 3.5 };
+      b = new double[] { 5.1, -10.5 };
+      betas = null;
       var resLU = lU.calculate_LU(gammas, alphas, betas, b);
       int i = 1;
       foreach (var v in resLU) {
@@ -51,6 +55,22 @@ namespace labs_nmcs {
     static void runLab4() {
       Lab4.Polinom lab4 = new Lab4.Polinom();
       lab4.run();
+      float[] x = new float[] { 0, 3, 6, 8, 10 };
+      float[] y = new float[] { 5, 2, 0, 4, 6 };
+      Lab4.CubicSpline spline = new Lab4.CubicSpline(x, y);
+      float[] resX = new float[501];
+      for (float i = 0; i <= 500; i++) {
+        resX[(int)i] = (float)Math.Round(i * 0.02, 2);
+      }
+      float[] resY = spline.Eval(resX);
+      List<Lab4.Point> points = new List<Lab4.Point>();
+      for (int i = 0; i < resY.Length; i++) {
+        points.Add(new Lab4.Point(resX[i], resY[i]));
+      }
+      Brush brush = new SolidBrush(Color.Red);
+      Thread.Sleep(500);
+      Thread thread = new Thread(thr => Lab4.FormDrawer.drawPoints(points.ToArray(), brush, lab4.field));
+      thread.Start();
     }
   }
 }

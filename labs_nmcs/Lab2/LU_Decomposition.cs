@@ -10,7 +10,7 @@ namespace labs_nmcs.Lab2 {
     public double[] calculate_LU(double[] gammas, double[] alphas, double[] betas, double[] b) {
 
       double[] lVector = new double[b.Length];
-      double[] uVector = new double[betas.Length];
+      double[] uVector = new double[gammas.Length];
       double[] yVector = new double[b.Length];
       double[] xVector = new double[b.Length];
 
@@ -22,7 +22,7 @@ namespace labs_nmcs.Lab2 {
           lVector[k] = alphas[k] - betas[k - 1] * uVector[k - 1];
           yVector[k] = (b[k] - betas[k - 1] * yVector[k - 1]) / lVector[k];
         }
-        if (k != betas.Length) {
+        if (k != gammas.Length) {
           uVector[k] = gammas[k] / lVector[k];
         }
       }

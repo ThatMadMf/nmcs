@@ -9,6 +9,8 @@ using System.Drawing;
 namespace labs_nmcs.Lab4 {
   class Polinom {
 
+    public Field field;
+
     public void run() {
       Point[] points = new Point[5];
       points[0] = new Point(0, 5);
@@ -17,11 +19,6 @@ namespace labs_nmcs.Lab4 {
       points[3] = new Point(8, 4);
       points[4] = new Point(10, 6);
 
-      double[][] input = new double[][] {
-        new double[]{ 3.5, 1, 5.1 },
-        new double[]{ 1, 3.5, -10.5}};
-
-      Lab2.SimpleIteration simpleIteration = new Lab2.SimpleIteration(input);
       double minValue = 2000;
       double maxValue = -2000;
       foreach (Point point in points) {
@@ -34,8 +31,8 @@ namespace labs_nmcs.Lab4 {
       }
       int numberOfPoints = 500;
       double step = (maxValue - minValue) / numberOfPoints;
-      double minY = 200000000;
-      double maxY = -200000000;
+      double minY = 2000;
+      double maxY = -2000;
       List<Point> results = new List<Point>();
       for (double i = minValue; i <= maxValue; i = Math.Round(step + i, 3)) {
         double currentY = Math.Round(L_BI_MI(points, i), 2);
@@ -50,7 +47,7 @@ namespace labs_nmcs.Lab4 {
       }
       Console.WriteLine("\n\n");
       Console.WriteLine(minY + "\t" + maxY);
-      Field field = new Field(minValue, minY, maxValue, maxY, numberOfPoints);
+      field = new Field(minValue, minY, maxValue, maxY, numberOfPoints);
       field.Show();
       Brush brush = new SolidBrush(Color.Blue);
       Thread thread = new Thread(thr => FormDrawer.drawPoints(results.ToArray(), brush, field));
