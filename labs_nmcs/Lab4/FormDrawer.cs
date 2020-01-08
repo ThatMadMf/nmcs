@@ -13,5 +13,11 @@ namespace labs_nmcs.Lab4 {
         field.drawPoint(point, brush);
       }
     }
+
+    public static void drawPoints(Point[] points, Brush brush, Field field, int size) {
+      foreach (Point point in points) {
+        field.drawPoint(point, brush, size);
+      }
+    }
   }
 }

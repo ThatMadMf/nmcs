@@ -59,13 +59,5 @@ namespace labs_nmcs {
         }
       }
     }
-
-    static public void lab5() {
-      Lab5Class runTest = new Lab5Class();
-
-      var result = runTest.calcualteArea(0, 60, "7 + 2 * Pow(Pow([x],(2/3)), -1)");
-      Console.WriteLine("Result area is " + result);
-      Console.ReadKey();
-    }
   }
 }

@@ -13,7 +13,7 @@ namespace labs_nmcs {
 
     [STAThread]
     static void Main(string[] args) {
-      runLab4();
+      runLab5();
       Console.ReadKey();
     }
 
@@ -71,6 +71,18 @@ namespace labs_nmcs {
       Thread.Sleep(500);
       Thread thread = new Thread(thr => Lab4.FormDrawer.drawPoints(points.ToArray(), brush, lab4.field));
       thread.Start();
+      Lab4.Point[] args = new Lab4.Point[x.Length];
+      for (int i = 0; i < x.Length; i++) {
+        args[i] = new Lab4.Point((int)x[i], (int)y[i]);
+      }
+      Brush blackBrush = new SolidBrush(Color.Black);
+      Lab4.FormDrawer.drawPoints(args, blackBrush, lab4.field, 7);
+    }
+
+    static void runLab5() {
+      string f = "7 + 2 * Pow([x], -2 / 3)";
+      double res = Lab5.Lab5Class.integrateSimpson3_8(0, 60, 10, f);
+      Console.WriteLine(res);
     }
   }
 }

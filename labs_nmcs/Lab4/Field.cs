@@ -31,9 +31,9 @@ namespace labs_nmcs.Lab4 {
       graphics = this.CreateGraphics();
     }
 
-    public void drawPoint(Point point, Brush brush) {
+    public void drawPoint(Point point, Brush brush, int size = 3) {
       Point p = makeCoordinate(point);
-      graphics.FillRectangle(brush, (float)p.X, (float)p.Y, 3, 3);
+      graphics.FillRectangle(brush, (float)p.X, (float)p.Y, size, size);
     }
 
     private Point makeCoordinate(Point point) {

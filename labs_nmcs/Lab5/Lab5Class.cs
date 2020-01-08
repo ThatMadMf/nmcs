@@ -6,43 +6,28 @@ using System.Threading.Tasks;
 using NCalc;
 
 namespace labs_nmcs.Lab5 {
-  class Lab5Class {
+  static class Lab5Class {
     public static double calcFunc(string f, double x) {
       Expression expression = new Expression(f);
       expression.Parameters["x"] = x;
-      return (double)expression.Evaluate();
+      double evaluate = (double)expression.Evaluate();
+      if (double.IsInfinity(evaluate) || double.IsNaN(evaluate)) {
+        return 0;
+      }
+      return evaluate;
     }
 
-    public double calcualteArea(int lowerBound, int upperBound, string function) {
-      const int amoutOfSegments = 10;
-      double segmentLength = (double)(upperBound - lowerBound) / (amoutOfSegments - 1);
-      double[] unknowns = initialiseUnknowns(segmentLength, 4);
-      double[] subAreas = new double[unknowns.Length];
-
-      for (int i = 0; i < subAreas.Length; i++) {
-        if (Double.IsInfinity(calcFunc(function, unknowns[i]))) {
-          subAreas[i] = 7;
+    public static double integrateSimpson3_8(double a, double b, int n, string f) {
+      double h = (b - a) / n;
+      double s = calcFunc(f, a) + calcFunc(f, b);
+      for (int i = 1; i < n; i++) {
+        if (i % 3 == 0) {
+          s += 2 * calcFunc(f, a + i * h);
         } else {
-          subAreas[i] = calcFunc(function, unknowns[i]);
+          s += 3 * calcFunc(f, a + i * h);
         }
-        Console.WriteLine($"Segment number {i + 1} has area {subAreas[i]}");
       }
-
-      return simpson3_8Formula(segmentLength, subAreas);
-    }
-
-    private double[] initialiseUnknowns(double distance, int lenght) {
-      double[] result = new double[lenght];
-      double x = 0;
-      for (int i = 0; i < lenght; i++) {
-        result[i] = x;
-        x += distance;
-      }
-      return result;
-    }
-
-    private double simpson3_8Formula(double h, double[] f) {
-      return (3 * h / 8) * (f[0] + 3 * f[1] + 3 * f[2] + 3 * f[3]);
+      return s * 3 / 8 * h;
     }
   }
 }
