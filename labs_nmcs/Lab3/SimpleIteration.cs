@@ -15,24 +15,25 @@ namespace labs_nmcs.Lab3 {
       Expression expression = new Expression(f);
       expression.Parameters["x"] = x;
       expression.Parameters["y"] = y;
-      var res = expression.Evaluate();
-      lastRes = (double)res;
-      return (double) res;
+      return (double)expression.Evaluate();
     }
 
     public double[] run(string f1, string f2, double x0, double y0) {
-      for (double x = x0, y = y0; ; x += eps, y+=eps) {
-        double currentX = caclFunc(f1, x, y);
-        double currentY = caclFunc(f2, x, y);
-        if(shouldStop(f1, f2, currentX, currentY)) {
-          break;
+      double currentX = x0;
+      double currentY = y0;
+      while (true) {
+        double tempX = currentX;
+        double tempY = currentY;
+        currentX = Math.Round(caclFunc(f1, tempX, tempY), 3);
+        currentY = Math.Round(caclFunc(f2, tempX, tempY), 3);
+        if (shouldStop(tempX, tempY, currentX, currentY)) {
+          return new double[] { currentX, currentY };
         }
       }
-      return null;
     }
 
-    private bool shouldStop(string f1, string f2, double x, double y) {
-      if(caclFunc(f1, x, y) < eps && caclFunc(f2, x, y) < eps) {
+    private bool shouldStop(double xn, double yn, double xn1, double yn1) {
+      if (Math.Abs(xn1 - xn) + Math.Abs(yn1 - yn) <= eps || Math.Abs(yn1 - yn) <= eps) {
         return true;
       }
       return false;

@@ -15,12 +15,7 @@ namespace labs_nmcs.Lab1 {
     }
 
     public double runSimpleIteration(int a, int b, double eps, string f) {
-      for (double currentX = a + eps; currentX <= b; currentX += eps) {
-        double funcValue = calcFunc(f, currentX);
-        if(funcValue < eps) {
-          return currentX;
-        }
-      }
+  
       throw new Exception("There is no solution in the segment");
     }
 

@@ -21,8 +21,8 @@ namespace labs_nmcs.Lab4 {
       test[2] = new Point(2, 2);
       test[3] = new Point(3, 1.5);
 
-      double[] h = findH(test);
-      double[] d = findD(test, h);
+      double[] h = findH(points);
+      double[] d = findD(points, h);
       double[] u = findU(d);
       var temp = makeSystem(h, d, u, 0.2, -1);
       var l = 5;

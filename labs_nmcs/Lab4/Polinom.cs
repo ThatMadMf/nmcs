@@ -50,8 +50,7 @@ namespace labs_nmcs.Lab4 {
       field = new Field(minValue, minY, maxValue, maxY, numberOfPoints);
       field.Show();
       Brush brush = new SolidBrush(Color.Blue);
-      Thread thread = new Thread(thr => FormDrawer.drawPoints(results.ToArray(), brush, field));
-      thread.Start();
+      FormDrawer.drawPoints(results.ToArray(), brush, field);
     }
 
     private double L_BI_MI(Point[] points, double x) {
