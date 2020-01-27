@@ -73,6 +73,7 @@
     <Compile Include="Lab4\TriDiagonalMatrix.cs" />
     <Compile Include="Lab5\Lab5Class.cs" />
     <Compile Include="Lab6\Euler.cs" />
+    <Compile Include="Lab7\Milne.cs" />
     <Compile Include="Labs.cs" />
     <Compile Include="LabsFactory.cs" />
     <Compile Include="Program.cs" />

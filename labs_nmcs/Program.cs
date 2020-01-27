@@ -13,7 +13,7 @@ namespace labs_nmcs {
 
         [STAThread]
         static void Main(string[] args) {
-            LabsFactory.getLab(Labs.Eluler).run();
+            LabsFactory.getLab(Labs.Milne).run();
             Console.ReadKey();
         }
 

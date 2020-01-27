@@ -29,18 +29,19 @@ namespace labs_nmcs.Lab6 {
 
         public void run() {
             double i = t0;
+            Console.WriteLine("t \t\t RESULT \t ACCURATE RESULT");
             foreach(var v in solve()) {
-                Console.WriteLine("x = " + i + "\ty= " + v + "\t\t" + caclT(i));
+                Console.WriteLine($"x = {String.Format("{0:0.00}", i)}\ty={String.Format("{0:0.000}", v)} \t{caclT(i)}");
                 i += h;
             }
         }
 
         private List<double> solve() {
-            for (double i = t0; i < tk; i = Math.Round(i + h, 1)) {
+            for (double i = t0 + h; i <= tk; i = Math.Round(i + h, 2)) {
                 if (results.Count < 2) {
-                    results.AddLast(results.Last.Value + h * caclFunc(f, i, results.Last.Value));
+                    results.AddLast(results.Last.Value + h * caclFunc(f, i - h, results.Last.Value));
                 } else {
-                    results.AddLast(results.Last.Previous.Value + 2 * h * caclFunc(f, i, results.Last.Value));
+                    results.AddLast(results.Last.Previous.Value + 2 * h * caclFunc(f, i - h, results.Last.Value));
                 }
             }
             return results.ToList();

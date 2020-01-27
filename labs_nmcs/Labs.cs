@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace labs_nmcs {
     enum Labs {
-        Eluler
+        Eluler,
+        Milne
     }
 }
